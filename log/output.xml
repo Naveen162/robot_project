@@ -1,284 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.9.13 on win32)" generated="20230118 15:51:37.526" rpa="false" schemaversion="3">
-<suite id="s1" name="Demo6Labs" source="C:\robot_project\selenium_suite\demo6labs.robot">
-<test id="s1-t1" name="TC4" line="31">
+<robot generator="Robot 6.0.2 (Python 3.9.13 on win32)" generated="20230119 10:47:57.547" rpa="false" schemaversion="3">
+<suite id="s1" name="Demo11 Actions" source="C:\robot_project\selenium_suite\demo11_actions.robot">
+<test id="s1-t1" name="TC5 Javascript" line="12">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>browser=chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230118 15:51:37.789" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
-<status status="PASS" starttime="20230118 15:51:37.789" endtime="20230118 15:51:39.716"/>
+<msg timestamp="20230119 10:47:57.811" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<status status="PASS" starttime="20230119 10:47:57.811" endtime="20230119 10:47:59.452"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230118 15:51:39.716" endtime="20230118 15:51:39.863"/>
+<status status="PASS" starttime="20230119 10:47:59.453" endtime="20230119 10:47:59.600"/>
 </kw>
 <kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
-<arg>20s</arg>
+<arg>10s</arg>
 <doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" starttime="20230118 15:51:39.863" endtime="20230118 15:51:39.874"/>
+<status status="PASS" starttime="20230119 10:47:59.600" endtime="20230119 10:47:59.602"/>
 </kw>
 <kw name="Go To" library="SeleniumLibrary">
-<arg>url=https://www.online.citibank.co.in/</arg>
+<arg>url=https://phptravels.net/</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20230118 15:51:39.874" level="INFO">Opening url 'https://www.online.citibank.co.in/'</msg>
-<status status="PASS" starttime="20230118 15:51:39.874" endtime="20230118 15:51:59.363"/>
+<msg timestamp="20230119 10:47:59.603" level="INFO">Opening url 'https://phptravels.net/'</msg>
+<status status="PASS" starttime="20230119 10:47:59.602" endtime="20230119 10:48:03.555"/>
 </kw>
-<kw name="Run Keyword And Ignore Error" library="BuiltIn">
-<arg>Click Element</arg>
-<arg>xpath=//a[@title='close']</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//a[@title='close']</arg>
+<arg>id=select2-hotels_city-container</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230118 15:51:59.368" level="INFO">Clicking element 'xpath=//a[@title='close']'.</msg>
-<msg timestamp="20230118 15:51:59.416" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
-from unknown error: web view not found
+<msg timestamp="20230119 10:48:03.557" level="INFO">Clicking element 'id=select2-hotels_city-container'.</msg>
+<status status="PASS" starttime="20230119 10:48:03.555" endtime="20230119 10:48:03.969"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//span[Contains(text()='Search by City']</arg>
+<arg>Vadodara</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230119 10:48:03.971" level="INFO">Typing text 'Vadodara' into text field 'xpath=//span[Contains(text()='Search by City']'.</msg>
+<msg timestamp="20230119 10:48:04.550" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-184.png"&gt;&lt;img src="selenium-screenshot-184.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20230119 10:48:04.550" level="FAIL">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //span[Contains(text()='Search by City'] because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//span[Contains(text()='Search by City']' is not a valid XPath expression.
   (Session info: chrome=109.0.5414.75)
 Stacktrace:
 Backtrace:
-	(No symbol) [0x00FB6643]
-	(No symbol) [0x00F4BE21]
-	(No symbol) [0x00E4DA9D]
-	(No symbol) [0x00E2EF6A]
-	(No symbol) [0x00EA3AAB]
-	(No symbol) [0x00EB61B6]
-	(No symbol) [0x00E9FB76]
-	(No symbol) [0x00E749C1]
-	(No symbol) [0x00E75E5D]
-	GetHandleVerifier [0x0122A142+2497106]
-	GetHandleVerifier [0x012585D3+2686691]
-	GetHandleVerifier [0x0125BB9C+2700460]
-	GetHandleVerifier [0x01063B10+635936]
-	(No symbol) [0x00F54A1F]
-	(No symbol) [0x00F5A418]
-	(No symbol) [0x00F5A505]
-	(No symbol) [0x00F6508B]
+	(No symbol) [0x00ED6643]
+	(No symbol) [0x00E6BE21]
+	(No symbol) [0x00D6DA9D]
+	(No symbol) [0x00D709E4]
+	(No symbol) [0x00D708AD]
+	(No symbol) [0x00D70B30]
+	(No symbol) [0x00DA0FAC]
+	(No symbol) [0x00DA147B]
+	(No symbol) [0x00DD8DFC]
+	(No symbol) [0x00DBFDC4]
+	(No symbol) [0x00DD6B09]
+	(No symbol) [0x00DBFB76]
+	(No symbol) [0x00D949C1]
+	(No symbol) [0x00D95E5D]
+	GetHandleVerifier [0x0114A142+2497106]
+	GetHandleVerifier [0x011785D3+2686691]
+	GetHandleVerifier [0x0117BB9C+2700460]
+	GetHandleVerifier [0x00F83B10+635936]
+	(No symbol) [0x00E74A1F]
+	(No symbol) [0x00E7A418]
+	(No symbol) [0x00E7A505]
+	(No symbol) [0x00E8508B]
 	BaseThreadInitThunk [0x75EBFEF9+25]
 	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
 	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
 </msg>
-<msg timestamp="20230118 15:51:59.418" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
-from unknown error: web view not found
+<status status="FAIL" starttime="20230119 10:48:03.970" endtime="20230119 10:48:04.550"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//li[contains(text(),'Vadodara,Ind']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20230119 10:48:04.550" endtime="20230119 10:48:04.550"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.querySelector('#checkin').value='31-10-2023'</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="NOT RUN" starttime="20230119 10:48:04.550" endtime="20230119 10:48:04.550"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.querySelector('#checkin').value='29-11-2023'</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="NOT RUN" starttime="20230119 10:48:04.550" endtime="20230119 10:48:04.550"/>
+</kw>
+<status status="FAIL" starttime="20230119 10:47:57.811" endtime="20230119 10:48:04.550">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //span[Contains(text()='Search by City'] because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//span[Contains(text()='Search by City']' is not a valid XPath expression.
   (Session info: chrome=109.0.5414.75)
 Stacktrace:
 Backtrace:
-	(No symbol) [0x00FB6643]
-	(No symbol) [0x00F4BE21]
-	(No symbol) [0x00E4DA9D]
-	(No symbol) [0x00E2EF6A]
-	(No symbol) [0x00EA3AAB]
-	(No symbol) [0x00EB61B6]
-	(No symbol) [0x00E9FB76]
-	(No symbol) [0x00E749C1]
-	(No symbol) [0x00E75E5D]
-	GetHandleVerifier [0x0122A142+2497106]
-	GetHandleVerifier [0x012585D3+2686691]
-	GetHandleVerifier [0x0125BB9C+2700460]
-	GetHandleVerifier [0x01063B10+635936]
-	(No symbol) [0x00F54A1F]
-	(No symbol) [0x00F5A418]
-	(No symbol) [0x00F5A505]
-	(No symbol) [0x00F6508B]
-	BaseThreadInitThunk [0x75EBFEF9+25]
-	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
-	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
-</msg>
-<status status="FAIL" starttime="20230118 15:51:59.366" endtime="20230118 15:51:59.429"/>
-</kw>
-<status status="PASS" starttime="20230118 15:51:59.364" endtime="20230118 15:51:59.430"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://a[@title='Close']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230118 15:51:59.435" level="INFO">Clicking element 'xpath://a[@title='Close']'.</msg>
-<msg timestamp="20230118 15:51:59.480" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=109.0.5414.75)
-Stacktrace:
-Backtrace:
-	(No symbol) [0x00FB6643]
-	(No symbol) [0x00F4BE21]
-	(No symbol) [0x00E4DA9D]
-	(No symbol) [0x00E2EF6A]
-	(No symbol) [0x00EA3AAB]
-	(No symbol) [0x00EB61B6]
-	(No symbol) [0x00E9FB76]
-	(No symbol) [0x00E749C1]
-	(No symbol) [0x00E75E5D]
-	GetHandleVerifier [0x0122A142+2497106]
-	GetHandleVerifier [0x012585D3+2686691]
-	GetHandleVerifier [0x0125BB9C+2700460]
-	GetHandleVerifier [0x01063B10+635936]
-	(No symbol) [0x00F54A1F]
-	(No symbol) [0x00F5A418]
-	(No symbol) [0x00F5A505]
-	(No symbol) [0x00F6508B]
-	BaseThreadInitThunk [0x75EBFEF9+25]
-	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
-	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
-</msg>
-<msg timestamp="20230118 15:51:59.482" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=109.0.5414.75)
-Stacktrace:
-Backtrace:
-	(No symbol) [0x00FB6643]
-	(No symbol) [0x00F4BE21]
-	(No symbol) [0x00E4DA9D]
-	(No symbol) [0x00E2EF6A]
-	(No symbol) [0x00EA3AAB]
-	(No symbol) [0x00EB61B6]
-	(No symbol) [0x00E9FB76]
-	(No symbol) [0x00E749C1]
-	(No symbol) [0x00E75E5D]
-	GetHandleVerifier [0x0122A142+2497106]
-	GetHandleVerifier [0x012585D3+2686691]
-	GetHandleVerifier [0x0125BB9C+2700460]
-	GetHandleVerifier [0x01063B10+635936]
-	(No symbol) [0x00F54A1F]
-	(No symbol) [0x00F5A418]
-	(No symbol) [0x00F5A505]
-	(No symbol) [0x00F6508B]
-	BaseThreadInitThunk [0x75EBFEF9+25]
-	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
-	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
-</msg>
-<status status="FAIL" starttime="20230118 15:51:59.432" endtime="20230118 15:51:59.484"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://span[@class='txtSign']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.485" endtime="20230118 15:51:59.486"/>
-</kw>
-<kw name="Switch Window" library="SeleniumLibrary">
-<arg>Citibank India</arg>
-<doc>Switches to browser window matching ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.487" endtime="20230118 15:51:59.488"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://div[@onclick='ForgotUserID();']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.489" endtime="20230118 15:51:59.491"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://a[@class='sbSelector']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.492" endtime="20230118 15:51:59.493"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>link:Credit Card</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.494" endtime="20230118 15:51:59.494"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id=citiCard1</arg>
-<arg>4545</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.494" endtime="20230118 15:51:59.495"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id=citiCard2</arg>
-<arg>5656</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.495" endtime="20230118 15:51:59.496"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id=citiCard3</arg>
-<arg>8887</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.496" endtime="20230118 15:51:59.496"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id=citiCard4</arg>
-<arg>9998</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.496" endtime="20230118 15:51:59.497"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id=cvvnumber</arg>
-<arg>758</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.498" endtime="20230118 15:51:59.498"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>name:DOB</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.499" endtime="20230118 15:51:59.499"/>
-</kw>
-<kw name="Select From List By Label" library="SeleniumLibrary">
-<arg>xpath=//select[@class='ui-datepicker-year']</arg>
-<arg>2022</arg>
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.499" endtime="20230118 15:51:59.499"/>
-</kw>
-<kw name="Select From List By Label" library="SeleniumLibrary">
-<arg>xpath=//select[@class='ui-datepicker-month']</arg>
-<arg>Apr</arg>
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.499" endtime="20230118 15:51:59.499"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>link=14</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.499" endtime="20230118 15:51:59.499"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath//input[@value='proceed']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.503" endtime="20230118 15:51:59.504"/>
-</kw>
-<kw name="Element Should Contain" library="SeleniumLibrary">
-<arg>id=ui-id-1</arg>
-<arg>Please accept Terms and conditions</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.504" endtime="20230118 15:51:59.504"/>
-</kw>
-<kw name="Switch Window" library="SeleniumLibrary">
-<arg>MAIN</arg>
-<doc>Switches to browser window matching ``locator``.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.508" endtime="20230118 15:51:59.508"/>
-</kw>
-<kw name="Close Window" library="SeleniumLibrary">
-<doc>Closes currently opened and selected browser window/tab.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.509" endtime="20230118 15:51:59.509"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.510" endtime="20230118 15:51:59.510"/>
-</kw>
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="NOT RUN" starttime="20230118 15:51:59.510" endtime="20230118 15:51:59.511"/>
-</kw>
-<status status="FAIL" starttime="20230118 15:51:37.789" endtime="20230118 15:51:59.512">NoSuchWindowException: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=109.0.5414.75)
-Stacktrace:
-Backtrace:
-	(No symbol) [0x00FB6643]
-	(No symbol) [0x00F4BE21]
-	(No symbol) [0x00E4DA9D]
-	(No symbol) [0x00E2EF6A]
-	(No symbol) [0x00EA3AAB]
-	(No symbol) [0x00EB61B6]
-	(No symbol) [0x00E9FB76]
-	(No symbol) [0x00E749C1]
-	(No symbol) [0x00E75E5D]
-	GetHandleVerifier [0x0122A142+2497106]
-	GetHandleVerifier [0x012585D3+2686691]
-	GetHandleVerifier [0x0125BB9C+2700460]
-	GetHandleVerifier [0x01063B10+635936]
-	(No symbol) [0x00F54A1F]
-	(No symbol) [0x00F5A418]
-	(No symbol) [0x00F5A505]
-	(No symbol) [0x00F6508B]
+	(No symbol) [0x00ED6643]
+	(No symbol) [0x00E6BE21]
+	(No symbol) [0x00D6DA9D]
+	(No symbol) [0x00D709E4]
+	(No symbol) [0x00D708AD]
+	(No symbol) [0x00D70B30]
+	(No symbol) [0x00DA0FAC]
+	(No symbol) [0x00DA147B]
+	(No symbol) [0x00DD8DFC]
+	(No symbol) [0x00DBFDC4]
+	(No symbol) [0x00DD6B09]
+	(No symbol) [0x00DBFB76]
+	(No symbol) [0x00D949C1]
+	(No symbol) [0x00D95E5D]
+	GetHandleVerifier [0x0114A142+2497106]
+	GetHandleVerifier [0x011785D3+2686691]
+	GetHandleVerifier [0x0117BB9C+2700460]
+	GetHandleVerifier [0x00F83B10+635936]
+	(No symbol) [0x00E74A1F]
+	(No symbol) [0x00E7A418]
+	(No symbol) [0x00E7A505]
+	(No symbol) [0x00E8508B]
 	BaseThreadInitThunk [0x75EBFEF9+25]
 	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
 	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
 </status>
 </test>
-<status status="FAIL" starttime="20230118 15:51:37.529" endtime="20230118 15:51:59.513"/>
+<status status="FAIL" starttime="20230119 10:47:57.547" endtime="20230119 10:48:04.550"/>
 </suite>
 <statistics>
 <total>
@@ -287,61 +124,9 @@ Backtrace:
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Demo6Labs">Demo6Labs</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Demo11 Actions">Demo11 Actions</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20230118 15:51:59.416" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=109.0.5414.75)
-Stacktrace:
-Backtrace:
-	(No symbol) [0x00FB6643]
-	(No symbol) [0x00F4BE21]
-	(No symbol) [0x00E4DA9D]
-	(No symbol) [0x00E2EF6A]
-	(No symbol) [0x00EA3AAB]
-	(No symbol) [0x00EB61B6]
-	(No symbol) [0x00E9FB76]
-	(No symbol) [0x00E749C1]
-	(No symbol) [0x00E75E5D]
-	GetHandleVerifier [0x0122A142+2497106]
-	GetHandleVerifier [0x012585D3+2686691]
-	GetHandleVerifier [0x0125BB9C+2700460]
-	GetHandleVerifier [0x01063B10+635936]
-	(No symbol) [0x00F54A1F]
-	(No symbol) [0x00F5A418]
-	(No symbol) [0x00F5A505]
-	(No symbol) [0x00F6508B]
-	BaseThreadInitThunk [0x75EBFEF9+25]
-	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
-	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
-</msg>
-<msg timestamp="20230118 15:51:59.480" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=109.0.5414.75)
-Stacktrace:
-Backtrace:
-	(No symbol) [0x00FB6643]
-	(No symbol) [0x00F4BE21]
-	(No symbol) [0x00E4DA9D]
-	(No symbol) [0x00E2EF6A]
-	(No symbol) [0x00EA3AAB]
-	(No symbol) [0x00EB61B6]
-	(No symbol) [0x00E9FB76]
-	(No symbol) [0x00E749C1]
-	(No symbol) [0x00E75E5D]
-	GetHandleVerifier [0x0122A142+2497106]
-	GetHandleVerifier [0x012585D3+2686691]
-	GetHandleVerifier [0x0125BB9C+2700460]
-	GetHandleVerifier [0x01063B10+635936]
-	(No symbol) [0x00F54A1F]
-	(No symbol) [0x00F5A418]
-	(No symbol) [0x00F5A505]
-	(No symbol) [0x00F6508B]
-	BaseThreadInitThunk [0x75EBFEF9+25]
-	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
-	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
-</msg>
 </errors>
 </robot>
