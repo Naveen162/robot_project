@@ -19,3 +19,4 @@ TC5 Javascript
     Click Element   xpath=//li[contains(text(),'Vadodara,Ind']
     Execute Javascript  document.querySelector('#checkin').value='31-10-2023'
     Execute Javascript  document.querySelector('#checkin').value='29-11-2023'
+

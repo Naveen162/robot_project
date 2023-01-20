@@ -1,121 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.9.13 on win32)" generated="20230119 10:47:57.547" rpa="false" schemaversion="3">
-<suite id="s1" name="Demo11 Actions" source="C:\robot_project\selenium_suite\demo11_actions.robot">
-<test id="s1-t1" name="TC5 Javascript" line="12">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>browser=chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230119 10:47:57.811" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
-<status status="PASS" starttime="20230119 10:47:57.811" endtime="20230119 10:47:59.452"/>
+<robot generator="Robot 6.0.2 (Python 3.9.13 on win32)" generated="20230120 17:46:52.852" rpa="false" schemaversion="3">
+<suite id="s1" name="Demo1 App Launch" source="C:\robot_project\appium_suite\demo1_app_launch.robot">
+<test id="s1-t1" name="TC1" line="4">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>remote_url=http://localhost:4723/wd/hub</arg>
+<arg>platformName=android</arg>
+<arg>deviceName=redmi</arg>
+<arg>app=C:${/}Components${/}khan-academy-7-3-2.apk</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20230120 17:46:55.279" level="FAIL">No application is open</msg>
+<status status="FAIL" starttime="20230120 17:46:55.279" endtime="20230120 17:46:55.296"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230119 10:47:59.453" endtime="20230119 10:47:59.600"/>
-</kw>
-<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
-<arg>10s</arg>
-<doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" starttime="20230119 10:47:59.600" endtime="20230119 10:47:59.602"/>
-</kw>
-<kw name="Go To" library="SeleniumLibrary">
-<arg>url=https://phptravels.net/</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20230119 10:47:59.603" level="INFO">Opening url 'https://phptravels.net/'</msg>
-<status status="PASS" starttime="20230119 10:47:59.602" endtime="20230119 10:48:03.555"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>id=select2-hotels_city-container</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230119 10:48:03.557" level="INFO">Clicking element 'id=select2-hotels_city-container'.</msg>
-<status status="PASS" starttime="20230119 10:48:03.555" endtime="20230119 10:48:03.969"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>xpath=//span[Contains(text()='Search by City']</arg>
-<arg>Vadodara</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230119 10:48:03.971" level="INFO">Typing text 'Vadodara' into text field 'xpath=//span[Contains(text()='Search by City']'.</msg>
-<msg timestamp="20230119 10:48:04.550" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-184.png"&gt;&lt;img src="selenium-screenshot-184.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20230119 10:48:04.550" level="FAIL">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //span[Contains(text()='Search by City'] because of the following error:
-SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//span[Contains(text()='Search by City']' is not a valid XPath expression.
-  (Session info: chrome=109.0.5414.75)
+<msg timestamp="20230120 17:46:55.296" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg timestamp="20230120 17:46:55.296" level="FAIL">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: The application at 'C:\Components\khan-academy-7-3-2.apk' does not exist or is not accessible
 Stacktrace:
-Backtrace:
-	(No symbol) [0x00ED6643]
-	(No symbol) [0x00E6BE21]
-	(No symbol) [0x00D6DA9D]
-	(No symbol) [0x00D709E4]
-	(No symbol) [0x00D708AD]
-	(No symbol) [0x00D70B30]
-	(No symbol) [0x00DA0FAC]
-	(No symbol) [0x00DA147B]
-	(No symbol) [0x00DD8DFC]
-	(No symbol) [0x00DBFDC4]
-	(No symbol) [0x00DD6B09]
-	(No symbol) [0x00DBFB76]
-	(No symbol) [0x00D949C1]
-	(No symbol) [0x00D95E5D]
-	GetHandleVerifier [0x0114A142+2497106]
-	GetHandleVerifier [0x011785D3+2686691]
-	GetHandleVerifier [0x0117BB9C+2700460]
-	GetHandleVerifier [0x00F83B10+635936]
-	(No symbol) [0x00E74A1F]
-	(No symbol) [0x00E7A418]
-	(No symbol) [0x00E7A505]
-	(No symbol) [0x00E8508B]
-	BaseThreadInitThunk [0x75EBFEF9+25]
-	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
-	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
-</msg>
-<status status="FAIL" starttime="20230119 10:48:03.970" endtime="20230119 10:48:04.550"/>
+UnknownError: An unknown server-side error occurred while processing the command. Original error: The application at 'C:\Components\khan-academy-7-3-2.apk' does not exist or is not accessible
+    at getResponseForW3CError (D:\Appium-Server-GUI-windows-1.22.3-4\resources\app\node_modules\appium\node_modules\appium-base-driver\lib\protocol\errors.js:804:9)
+    at asyncHandler (D:\Appium-Server-GUI-windows-1.22.3-4\resources\app\node_modules\appium\node_modules\appium-base-driver\lib\protocol\protocol.js:380:37)</msg>
+<status status="FAIL" starttime="20230120 17:46:53.148" endtime="20230120 17:46:55.296"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//li[contains(text(),'Vadodara,Ind']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20230119 10:48:04.550" endtime="20230119 10:48:04.550"/>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//*[@text='Dismiss']</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
 </kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.querySelector('#checkin').value='31-10-2023'</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<status status="NOT RUN" starttime="20230119 10:48:04.550" endtime="20230119 10:48:04.550"/>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//*[@text='Dismiss']</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
 </kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.querySelector('#checkin').value='29-11-2023'</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<status status="NOT RUN" starttime="20230119 10:48:04.550" endtime="20230119 10:48:04.550"/>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.Button[@text='Sign in']</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
 </kw>
-<status status="FAIL" starttime="20230119 10:47:57.811" endtime="20230119 10:48:04.550">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //span[Contains(text()='Search by City'] because of the following error:
-SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//span[Contains(text()='Search by City']' is not a valid XPath expression.
-  (Session info: chrome=109.0.5414.75)
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.Button[@text='Sign in']</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.TextView[@text='Sign in']</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.TextView[@text='Sign in']</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.EditText[@text='Enter an e-mail address or username']</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.EditText[@text='Enter an e-mail address or username']</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>xpath=//android.widget.EditText[@text='Enter an e-mail address or username']</arg>
+<arg>naveen</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>xpath=//android.widget.EditText[@text='Password']</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.296"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>xpath=//android.widget.EditText[@text='Password']</arg>
+<arg>naveen@123</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230120 17:46:55.296" endtime="20230120 17:46:55.312"/>
+</kw>
+<status status="FAIL" starttime="20230120 17:46:53.132" endtime="20230120 17:46:55.312">WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: The application at 'C:\Components\khan-academy-7-3-2.apk' does not exist or is not accessible
 Stacktrace:
-Backtrace:
-	(No symbol) [0x00ED6643]
-	(No symbol) [0x00E6BE21]
-	(No symbol) [0x00D6DA9D]
-	(No symbol) [0x00D709E4]
-	(No symbol) [0x00D708AD]
-	(No symbol) [0x00D70B30]
-	(No symbol) [0x00DA0FAC]
-	(No symbol) [0x00DA147B]
-	(No symbol) [0x00DD8DFC]
-	(No symbol) [0x00DBFDC4]
-	(No symbol) [0x00DD6B09]
-	(No symbol) [0x00DBFB76]
-	(No symbol) [0x00D949C1]
-	(No symbol) [0x00D95E5D]
-	GetHandleVerifier [0x0114A142+2497106]
-	GetHandleVerifier [0x011785D3+2686691]
-	GetHandleVerifier [0x0117BB9C+2700460]
-	GetHandleVerifier [0x00F83B10+635936]
-	(No symbol) [0x00E74A1F]
-	(No symbol) [0x00E7A418]
-	(No symbol) [0x00E7A505]
-	(No symbol) [0x00E8508B]
-	BaseThreadInitThunk [0x75EBFEF9+25]
-	RtlGetAppContainerNamedObjectPath [0x772B7BBE+286]
-	RtlGetAppContainerNamedObjectPath [0x772B7B8E+238]
-</status>
+UnknownError: An unknown server-side error occurred while processing the command. Original error: The application at 'C:\Components\khan-academy-7-3-2.apk' does not exist or is not accessible
+    at getResponseForW3CError (D:\Appium-Server-GUI-windows-1.22.3-4\resources\app\node_modules\appium\node_modules\appium-base-driver\lib\protocol\errors.js:804:9)
+    at asyncHandler (D:\Appium-Server-GUI-windows-1.22.3-4\resources\app\node_modules\appium\node_modules\appium-base-driver\lib\protocol\protocol.js:380:37)</status>
 </test>
-<status status="FAIL" starttime="20230119 10:47:57.547" endtime="20230119 10:48:04.550"/>
+<status status="FAIL" starttime="20230120 17:46:52.865" endtime="20230120 17:46:55.312"/>
 </suite>
 <statistics>
 <total>
@@ -124,9 +103,10 @@ Backtrace:
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Demo11 Actions">Demo11 Actions</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Demo1 App Launch">Demo1 App Launch</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20230120 17:46:55.296" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
 </errors>
 </robot>

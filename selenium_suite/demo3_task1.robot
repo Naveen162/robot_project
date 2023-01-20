@@ -1,6 +1,5 @@
 *** Settings ***
 Library     SeleniumLibrary
-
 *** Test Cases ***
 TC1
    Open Browser    browser=chrome
@@ -14,10 +13,9 @@ TC1
    Input Text    name=CompanyName    L&t
    Select From List By Label  name=CompanyEmployees   101 - 500 employees
    Input Text  name=UserPhone  1234567890
-   Input Text  name=country     india
-   Click Element  class:checkbox-ui
-   Close Window
-   Close All Browsers
+   Select From List By Label  name=CompanyCountry  India
+   Click Element  xpath=//div[@class='checkbox-ui']
+   Click Element    name=start my free trial
 TC2
    Open Browser  browser=chrome
    Set Selenium Implicit Wait    120s
@@ -28,15 +26,12 @@ TC2
    Input Text    name=PhoneNumber  1234567890
    Input Text    name=Password     Naveen@123
    Select From List By Label  name=CompanySize  10-99
-
 TC3
    Set Selenium Implicit Wait   100s
    Open Browser   browser=chrome
    Go To          url=https://www.medibuddy.in/
    Click Element  link=login      
    Input Text     name=mobile    1234567890
-
-
 TC5
     Open Browser    browser=chrome
     Maximize Browser Window
