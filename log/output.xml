@@ -1,409 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.9.13 on win32)" generated="20230124 15:39:51.844" rpa="false" schemaversion="3">
-<suite id="s1" name="Demo5 Ios Nativeapp" source="C:\robot_project\selenium_suite\demo5_ios_nativeapp.robot">
-<test id="s1-t1" name="TC1" line="5">
-<kw name="Create Dictionary" library="BuiltIn">
-<var>&amp;{dic}</var>
-<arg>buildName=khan lt7</arg>
-<arg>projectName=khan project lt7</arg>
-<arg>userName=naveenmanibhaska_bV3ZG7</arg>
-<arg>accessKey=hSgo3cWPvGKuqc7cAfxz</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230124 15:39:52.346" level="INFO">&amp;{dic} = { buildName=khan lt7 | projectName=khan project lt7 | userName=naveenmanibhaska_bV3ZG7 | accessKey=hSgo3cWPvGKuqc7cAfxz }</msg>
-<status status="PASS" starttime="20230124 15:39:52.346" endtime="20230124 15:39:52.357"/>
+<robot generator="Robot 6.0.2 (Python 3.9.13 on win32)" generated="20230127 10:22:40.510" rpa="false" schemaversion="3">
+<suite id="s1" name="Demo2" source="C:\robot_project\api_suite\demo2.robot">
+<kw name="Create Session" library="RequestsLibrary" type="SETUP">
+<arg>alias=petshop</arg>
+<arg>url=https://petstore.swagger.io/v2/</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230127 10:22:40.701" level="INFO">Creating Session using : alias=petshop, url=https://petstore.swagger.io/v2/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230127 10:22:40.700" endtime="20230127 10:22:40.708"/>
 </kw>
-<kw name="Open Application" library="AppiumLibrary">
-<arg>remote_url=http://hub.browserstack.com/wd/hub</arg>
-<arg>platformName=ios</arg>
-<arg>deviceName=iPhone 11 Pro</arg>
-<arg>app=bs://0e9ae50b899fba3c8731e7a5177d40a18688cc30</arg>
-<arg>platformVersion=13</arg>
-<arg>bstack:options=${dic}</arg>
-<doc>Opens a new application to given Appium server.
-Capabilities of appium server, Android and iOS,
-Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
-| *Option*            | *Man.* | *Description*     |
-| remote_url          | Yes    | Appium server url |
-| alias               | no     | alias             |
-| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" starttime="20230124 15:39:52.358" endtime="20230124 15:40:10.562"/>
+<test id="s1-t1" name="TC1 Get Pet" line="6">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>alias=petshop</arg>
+<arg>url=pet/101</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230127 10:22:41.592" level="INFO">GET Request : url=https://petstore.swagger.io/v2/pet/101 
+ path_url=/v2/pet/101 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230127 10:22:41.592" level="INFO">GET Response : url=https://petstore.swagger.io/v2/pet/101 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 27 Jan 2023 04:52:39 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":101,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"available"} 
+ </msg>
+<msg timestamp="20230127 10:22:41.592" level="INFO">C:\Users\40032462\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230127 10:22:41.592" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230127 10:22:40.710" endtime="20230127 10:22:41.592"/>
 </kw>
-<kw name="Set Appium Timeout" library="AppiumLibrary">
-<arg>20s</arg>
-<doc>Sets the timeout in seconds used by various keywords.</doc>
-<status status="PASS" starttime="20230124 15:40:10.562" endtime="20230124 15:40:10.563"/>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230127 10:22:41.592" endtime="20230127 10:22:41.592"/>
 </kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-Username"]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:11.941" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-Username"]</msg>
-<status status="PASS" starttime="20230124 15:40:10.564" endtime="20230124 15:40:11.941"/>
-</kw>
-<kw name="Input Text" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-Username"]</arg>
-<arg>standard_user</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:11.945" level="INFO">Typing text 'standard_user' into text field 'xpath=//XCUIElementTypeTextField[@name="test-Username"]'</msg>
-<msg timestamp="20230124 15:40:15.825" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-Username"]</msg>
-<status status="PASS" starttime="20230124 15:40:11.942" endtime="20230124 15:40:15.825"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeSecureTextField[@name="test-Password"]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:17.255" level="INFO">xpath criteria: //XCUIElementTypeSecureTextField[@name="test-Password"]</msg>
-<status status="PASS" starttime="20230124 15:40:15.825" endtime="20230124 15:40:17.255"/>
-</kw>
-<kw name="Input Password" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeSecureTextField[@name="test-Password"]</arg>
-<arg>secret_sauce</arg>
-<doc>Types the given password into text field identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:17.256" level="INFO">Typing password into text field 'xpath=//XCUIElementTypeSecureTextField[@name="test-Password"]'</msg>
-<msg timestamp="20230124 15:40:20.390" level="INFO">xpath criteria: //XCUIElementTypeSecureTextField[@name="test-Password"]</msg>
-<status status="PASS" starttime="20230124 15:40:17.255" endtime="20230124 15:40:20.390"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeOther[@name="test-LOGIN"]</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:20.393" level="INFO">Clicking element 'xpath=//XCUIElementTypeOther[@name="test-LOGIN"]'.</msg>
-<msg timestamp="20230124 15:40:23.042" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="test-LOGIN"]</msg>
-<status status="PASS" starttime="20230124 15:40:20.390" endtime="20230124 15:40:23.043"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=(//XCUIElementTypeOther[@name="test-ADD TO CART"])[1]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:24.475" level="INFO">xpath criteria: (//XCUIElementTypeOther[@name="test-ADD TO CART"])[1]</msg>
-<status status="PASS" starttime="20230124 15:40:23.044" endtime="20230124 15:40:24.476"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>xpath=(//XCUIElementTypeOther[@name="test-ADD TO CART"])[1]</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:24.477" level="INFO">Clicking element 'xpath=(//XCUIElementTypeOther[@name="test-ADD TO CART"])[1]'.</msg>
-<msg timestamp="20230124 15:40:26.967" level="INFO">xpath criteria: (//XCUIElementTypeOther[@name="test-ADD TO CART"])[1]</msg>
-<status status="PASS" starttime="20230124 15:40:24.476" endtime="20230124 15:40:26.967"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=(//XCUIElementTypeOther[@name="test-ADD TO CART"])[2]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:28.396" level="INFO">xpath criteria: (//XCUIElementTypeOther[@name="test-ADD TO CART"])[2]</msg>
-<status status="PASS" starttime="20230124 15:40:26.967" endtime="20230124 15:40:28.397"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>xpath=(//XCUIElementTypeOther[@name="test-ADD TO CART"])[2]</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:28.400" level="INFO">Clicking element 'xpath=(//XCUIElementTypeOther[@name="test-ADD TO CART"])[2]'.</msg>
-<msg timestamp="20230124 15:40:30.884" level="INFO">xpath criteria: (//XCUIElementTypeOther[@name="test-ADD TO CART"])[2]</msg>
-<status status="PASS" starttime="20230124 15:40:28.398" endtime="20230124 15:40:30.884"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeOther[@name="test-Cart"]/XCUIElementTypeOther</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:30.886" level="INFO">Clicking element 'xpath=//XCUIElementTypeOther[@name="test-Cart"]/XCUIElementTypeOther'.</msg>
-<msg timestamp="20230124 15:40:34.324" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="test-Cart"]/XCUIElementTypeOther</msg>
-<status status="PASS" starttime="20230124 15:40:30.884" endtime="20230124 15:40:34.325"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeOther[@name="test-CHECKOUT"]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:35.667" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="test-CHECKOUT"]</msg>
-<status status="PASS" starttime="20230124 15:40:34.325" endtime="20230124 15:40:35.668"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeOther[@name="test-CHECKOUT"]</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:35.671" level="INFO">Clicking element 'xpath=//XCUIElementTypeOther[@name="test-CHECKOUT"]'.</msg>
-<msg timestamp="20230124 15:40:37.969" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="test-CHECKOUT"]</msg>
-<status status="PASS" starttime="20230124 15:40:35.668" endtime="20230124 15:40:37.969"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-First Name"]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:39.349" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-First Name"]</msg>
-<status status="PASS" starttime="20230124 15:40:37.970" endtime="20230124 15:40:39.349"/>
-</kw>
-<kw name="Input Text" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-First Name"]</arg>
-<arg>naveen</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:39.351" level="INFO">Typing text 'naveen' into text field 'xpath=//XCUIElementTypeTextField[@name="test-First Name"]'</msg>
-<msg timestamp="20230124 15:40:43.092" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-First Name"]</msg>
-<status status="PASS" starttime="20230124 15:40:39.349" endtime="20230124 15:40:43.092"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-Last Name"]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:44.550" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-Last Name"]</msg>
-<status status="PASS" starttime="20230124 15:40:43.093" endtime="20230124 15:40:44.551"/>
-</kw>
-<kw name="Input Text" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-Last Name"]</arg>
-<arg>manibhaskar</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:44.554" level="INFO">Typing text 'manibhaskar' into text field 'xpath=//XCUIElementTypeTextField[@name="test-Last Name"]'</msg>
-<msg timestamp="20230124 15:40:47.852" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-Last Name"]</msg>
-<status status="PASS" starttime="20230124 15:40:44.551" endtime="20230124 15:40:47.852"/>
-</kw>
-<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-Zip/Postal Code"]</arg>
-<doc>Waits until element specified with `locator` appears on current page.</doc>
-<msg timestamp="20230124 15:40:49.307" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-Zip/Postal Code"]</msg>
-<status status="PASS" starttime="20230124 15:40:47.852" endtime="20230124 15:40:49.307"/>
-</kw>
-<kw name="Input Text" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeTextField[@name="test-Zip/Postal Code"]</arg>
-<arg>100022</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:49.310" level="INFO">Typing text '100022' into text field 'xpath=//XCUIElementTypeTextField[@name="test-Zip/Postal Code"]'</msg>
-<msg timestamp="20230124 15:40:52.458" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="test-Zip/Postal Code"]</msg>
-<status status="PASS" starttime="20230124 15:40:49.308" endtime="20230124 15:40:52.459"/>
-</kw>
-<kw name="Click Element" library="AppiumLibrary">
-<arg>xpath=//XCUIElementTypeOther[@name="test-CONTINUE"]</arg>
-<doc>Click element identified by `locator`.</doc>
-<msg timestamp="20230124 15:40:52.462" level="INFO">Clicking element 'xpath=//XCUIElementTypeOther[@name="test-CONTINUE"]'.</msg>
-<msg timestamp="20230124 15:40:57.569" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="test-CONTINUE"]</msg>
-<status status="PASS" starttime="20230124 15:40:52.460" endtime="20230124 15:40:57.570"/>
-</kw>
-<kw name="Get Source" library="AppiumLibrary">
-<var>${app_source}</var>
-<doc>Returns the entire source of the current page.</doc>
-<msg timestamp="20230124 15:41:01.090" level="INFO">${app_source} = &lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;AppiumAUT&gt;&lt;XCUIElementTypeApplication type="XCUIElementTypeApplication" name="SwagLabsMobileApp" label="SwagLabsMobileApp" enabled="true" visible="true" x="0" y=...</msg>
-<status status="PASS" starttime="20230124 15:40:57.570" endtime="20230124 15:41:01.090"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${app_source}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230124 15:41:01.091" level="INFO">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;AppiumAUT&gt;&lt;XCUIElementTypeApplication type="XCUIElementTypeApplication" name="SwagLabsMobileApp" label="SwagLabsMobileApp" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-  &lt;XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-          &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="0" width="375" height="44"/&gt;
-                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2 ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="false" x="-375" y="0" width="375" height="812"&gt;
-                      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="false" x="-375" y="0" width="375" height="812"&gt;
-                        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="false" x="-375" y="0" width="375" height="812"&gt;
-                          &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" label="ALL ITEMS WEBVIEW QR CODE SCANNER GEO LOCATION DRAWING ABOUT LOGOUT RESET APP STATE" enabled="true" visible="false" x="-375" y="0" width="375" height="812"&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-Close" enabled="true" visible="false" x="-365" y="44" width="355" height="60"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-ALL ITEMS" label="ALL ITEMS" enabled="true" visible="false" x="-355" y="114" width="335" height="46"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-WEBVIEW" label="WEBVIEW" enabled="true" visible="false" x="-355" y="179" width="335" height="47"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-QR CODE SCANNER" label="QR CODE SCANNER" enabled="true" visible="false" x="-355" y="245" width="335" height="46"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-GEO LOCATION" label="GEO LOCATION" enabled="true" visible="false" x="-355" y="311" width="335" height="46"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-DRAWING" label="DRAWING" enabled="true" visible="false" x="-355" y="376" width="335" height="47"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-ABOUT" label="ABOUT" enabled="true" visible="false" x="-355" y="442" width="335" height="46"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-LOGOUT" label="LOGOUT" enabled="true" visible="false" x="-355" y="508" width="335" height="46"/&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-RESET APP STATE" label="RESET APP STATE" enabled="true" visible="false" x="-355" y="573" width="335" height="47"/&gt;
-                          &lt;/XCUIElementTypeOther&gt;
-                        &lt;/XCUIElementTypeOther&gt;
-                      &lt;/XCUIElementTypeOther&gt;
-                    &lt;/XCUIElementTypeOther&gt;
-                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                          &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page 2" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="2" label="2" enabled="true" visible="true" x="0" y="0" width="375" height="104"&gt;
-                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="2" label="2" enabled="true" visible="true" x="0" y="0" width="375" height="104"&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="headerContainer" enabled="true" visible="true" x="0" y="0" width="375" height="104"&gt;
-                                      &lt;XCUIElementTypeImage type="XCUIElementTypeImage" enabled="true" visible="false" x="0" y="0" width="375" height="104"/&gt;
-                                    &lt;/XCUIElementTypeOther&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="10" y="54" width="71" height="40"&gt;
-                                      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-Menu" enabled="true" visible="true" x="10" y="54" width="40" height="40"&gt;
-                                        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="10" y="54" width="40" height="40"/&gt;
-                                      &lt;/XCUIElementTypeOther&gt;
-                                    &lt;/XCUIElementTypeOther&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="2" label="2" enabled="true" visible="true" x="294" y="49" width="71" height="50"&gt;
-                                      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-Cart" label="2" enabled="true" visible="true" x="315" y="49" width="50" height="50"&gt;
-                                        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="2" label="2" enabled="true" visible="true" x="315" y="49" width="50" height="50"/&gt;
-                                      &lt;/XCUIElementTypeOther&gt;
-                                    &lt;/XCUIElementTypeOther&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="81" y="59" width="213" height="30"&gt;
-                                      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="81" y="59" width="213" height="30"&gt;
-                                        &lt;XCUIElementTypeImage type="XCUIElementTypeImage" enabled="true" visible="false" x="81" y="59" width="213" height="30"/&gt;
-                                      &lt;/XCUIElementTypeOther&gt;
-                                    &lt;/XCUIElementTypeOther&gt;
-                                  &lt;/XCUIElementTypeOther&gt;
-                                &lt;/XCUIElementTypeOther&gt;
-                                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" label="Username Password LOGIN The currently accepted usernames for this application are (tap to autofill): standard_user locked_out_user problem_user And the password for all users is: secret_sauce Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" enabled="true" visible="false" x="-113" y="0" width="376" height="812"&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="-113" y="0" width="4" height="812"/&gt;
-                                  &lt;/XCUIElementTypeOther&gt;
-                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page" label="PRODUCTS 󰝁 Sauce Labs Backpack $29.99 REMOVE 󰝁 Sauce Labs Bike Light $9.99 󰇛 ADD TO CART 󰝁 Sauce Labs Bolt T-Shirt $15.99 REMOVE 󰝁 Sauce Labs Fleece Jacket $49.99 󰇛 ADD TO CART 󰝁 Sauce Labs Onesie $7.99 󰇛 ADD TO CART 󰝁 Test.allTheThings() T-Shirt (Red) $15.99 󰇛 ADD TO CART     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 4 pages Horizontal scroll bar, 1 page" enabled="true" visible="false" x="-113" y="0" width="376" height="812"&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="-113" y="0" width="4" height="812"/&gt;
-                                  &lt;/XCUIElementTypeOther&gt;
-                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page" label="YOUR CART QTY DESCRIPTION 󰩺 1 󰜾 Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection. $29.99 REMOVE 󰩺 1 󰜾 Sauce Labs Bolt T-Shirt Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt. $15.99 REMOVE CONTINUE SHOPPING CHECKOUT     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 3 pages Horizontal scroll bar, 1 page" enabled="true" visible="false" x="-113" y="0" width="376" height="812"&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="-113" y="0" width="4" height="812"/&gt;
-                                  &lt;/XCUIElementTypeOther&gt;
-                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" label="CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="0" width="3" height="812"/&gt;
-                                    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" label="CHECKOUT: INFORMATION CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" enabled="true" visible="true" x="0" y="104" width="375" height="708"&gt;
-                                      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="CHECKOUT: INFORMATION" label="CHECKOUT: INFORMATION" enabled="true" visible="true" x="0" y="104" width="375" height="65"&gt;
-                                        &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="CHECKOUT: INFORMATION" name="CHECKOUT: INFORMATION" label="CHECKOUT: INFORMATION" enabled="true" visible="true" x="10" y="118" width="356" height="37"/&gt;
-                                      &lt;/XCUIElementTypeOther&gt;
-                                      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-Checkout: Your Info" label="CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy Vertical scroll bar, 2 pages Horizontal scroll bar, 1 page" enabled="true" visible="true" x="0" y="169" width="375" height="643"&gt;
-                                        &lt;XCUIElementTypeScrollView type="XCUIElementTypeScrollView" enabled="true" visible="true" x="0" y="169" width="375" height="643"&gt;
-                                          &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" label="CANCEL CONTINUE     © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" enabled="true" visible="true" x="0" y="189" width="375" height="961"&gt;
-                                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="189" width="375" height="249"&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="209" width="295" height="43"&gt;
-                                                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="209" width="295" height="43"&gt;
-                                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="209" width="295" height="40"&gt;
-                                                    &lt;XCUIElementTypeTextField type="XCUIElementTypeTextField" value="naveen" name="test-First Name" label="" enabled="true" visible="true" x="40" y="209" width="295" height="40"/&gt;
-                                                  &lt;/XCUIElementTypeOther&gt;
-                                                &lt;/XCUIElementTypeOther&gt;
-                                              &lt;/XCUIElementTypeOther&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="272" width="295" height="44"&gt;
-                                                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="272" width="295" height="44"&gt;
-                                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="272" width="295" height="41"&gt;
-                                                    &lt;XCUIElementTypeTextField type="XCUIElementTypeTextField" value="manibhaskar" name="test-Last Name" label="" enabled="true" visible="true" x="40" y="272" width="295" height="41"/&gt;
-                                                  &lt;/XCUIElementTypeOther&gt;
-                                                &lt;/XCUIElementTypeOther&gt;
-                                              &lt;/XCUIElementTypeOther&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="335" width="295" height="44"&gt;
-                                                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="335" width="295" height="44"&gt;
-                                                  &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="335" width="295" height="41"&gt;
-                                                    &lt;XCUIElementTypeTextField type="XCUIElementTypeTextField" value="100022" name="test-Zip/Postal Code" label="" enabled="true" visible="true" x="40" y="335" width="295" height="41"/&gt;
-                                                  &lt;/XCUIElementTypeOther&gt;
-                                                &lt;/XCUIElementTypeOther&gt;
-                                              &lt;/XCUIElementTypeOther&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="40" y="380" width="295" height="56"/&gt;
-                                            &lt;/XCUIElementTypeOther&gt;
-                                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="CANCEL CONTINUE" label="CANCEL CONTINUE" enabled="true" visible="true" x="0" y="437" width="375" height="164"&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="10" y="440" width="355" height="4"/&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="CANCEL" label="CANCEL" enabled="true" visible="true" x="10" y="473" width="355" height="57"&gt;
-                                                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-CANCEL" label="CANCEL" enabled="true" visible="true" x="12" y="475" width="351" height="53"/&gt;
-                                              &lt;/XCUIElementTypeOther&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="10" y="539" width="355" height="1"/&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="CONTINUE" label="CONTINUE" enabled="true" visible="false" x="10" y="550" width="355" height="51"&gt;
-                                                &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="test-CONTINUE" label="CONTINUE" enabled="true" visible="false" x="10" y="550" width="355" height="51"/&gt;
-                                              &lt;/XCUIElementTypeOther&gt;
-                                            &lt;/XCUIElementTypeOther&gt;
-                                            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="    © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" label="    © 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" enabled="true" visible="false" x="0" y="645" width="375" height="505"&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" name="   " label="   " enabled="true" visible="false" x="20" y="685" width="335" height="60"&gt;
-                                                &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="" name="" label="" enabled="true" visible="false" x="20" y="685" width="60" height="60"/&gt;
-                                                &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="" name="" label="" enabled="true" visible="false" x="111" y="685" width="61" height="60"/&gt;
-                                                &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="" name="" label="" enabled="true" visible="false" x="203" y="685" width="61" height="60"/&gt;
-                                                &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="" name="" label="" enabled="true" visible="false" x="295" y="685" width="60" height="60"/&gt;
-                                              &lt;/XCUIElementTypeOther&gt;
-                                              &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="© 2023 Sauce Labs. All Rights Reserved." name="© 2023 Sauce Labs. All Rights Reserved." label="© 2023 Sauce Labs. All Rights Reserved." enabled="true" visible="false" x="20" y="785" width="335" height="54"/&gt;
-                                              &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Terms of Service | Privacy Policy" name="Terms of Service | Privacy Policy" label="Terms of Service | Privacy Policy" enabled="true" visible="false" x="20" y="838" width="335" height="27"/&gt;
-                                              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="20" y="904" width="335" height="246"&gt;
-                                                &lt;XCUIElementTypeImage type="XCUIElementTypeImage" enabled="true" visible="false" x="20" y="904" width="335" height="246"/&gt;
-                                              &lt;/XCUIElementTypeOther&gt;
-                                            &lt;/XCUIElementTypeOther&gt;
-                                          &lt;/XCUIElementTypeOther&gt;
-                                          &lt;XCUIElementTypeOther type="XCUIElementTypeOther" value="0 %" name="Vertical scroll bar, 2 pages" label="Vertical scroll bar, 2 pages" enabled="true" visible="true" x="342" y="169" width="30" height="609"/&gt;
-                                          &lt;XCUIElementTypeOther type="XCUIElementTypeOther" value="0 %" name="Horizontal scroll bar, 1 page" label="Horizontal scroll bar, 1 page" enabled="true" visible="false" x="0" y="745" width="375" height="30"/&gt;
-                                        &lt;/XCUIElementTypeScrollView&gt;
-                                      &lt;/XCUIElementTypeOther&gt;
-                                    &lt;/XCUIElementTypeOther&gt;
-                                  &lt;/XCUIElementTypeOther&gt;
-                                &lt;/XCUIElementTypeOther&gt;
-                              &lt;/XCUIElementTypeOther&gt;
-                            &lt;/XCUIElementTypeOther&gt;
-                          &lt;/XCUIElementTypeOther&gt;
-                        &lt;/XCUIElementTypeOther&gt;
-                      &lt;/XCUIElementTypeOther&gt;
-                    &lt;/XCUIElementTypeOther&gt;
-                  &lt;/XCUIElementTypeOther&gt;
-                &lt;/XCUIElementTypeOther&gt;
-              &lt;/XCUIElementTypeOther&gt;
-            &lt;/XCUIElementTypeOther&gt;
-          &lt;/XCUIElementTypeOther&gt;
-        &lt;/XCUIElementTypeOther&gt;
-      &lt;/XCUIElementTypeOther&gt;
-    &lt;/XCUIElementTypeOther&gt;
-  &lt;/XCUIElementTypeWindow&gt;
-  &lt;XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="false" x="0" y="0" width="375" height="812"&gt;
-    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="0" width="375" height="812"&gt;
-      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="0" width="375" height="812"/&gt;
-      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="521" width="375" height="291"&gt;
-        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="521" width="375" height="233"/&gt;
-      &lt;/XCUIElementTypeOther&gt;
-    &lt;/XCUIElementTypeOther&gt;
-  &lt;/XCUIElementTypeWindow&gt;
-  &lt;XCUIElementTypeWindow type="XCUIElementTypeWindow" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-    &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="0" width="375" height="812"&gt;
-      &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="521" width="375" height="291"&gt;
-        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="521" width="375" height="233"&gt;
-          &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="521" width="375" height="291"&gt;
-            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="521" width="375" height="291"&gt;
-              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="false" x="0" y="521" width="375" height="291"/&gt;
-            &lt;/XCUIElementTypeOther&gt;
-          &lt;/XCUIElementTypeOther&gt;
-        &lt;/XCUIElementTypeOther&gt;
-        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="521" width="375" height="233"&gt;
-          &lt;XCUIElementTypeKeyboard type="XCUIElementTypeKeyboard" enabled="true" visible="true" x="0" y="521" width="375" height="233"&gt;
-            &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="521" width="375" height="233"&gt;
-              &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="521" width="375" height="233"&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="q" label="q" enabled="true" visible="true" x="0" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="w" label="w" enabled="true" visible="true" x="37" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="e" label="e" enabled="true" visible="true" x="75" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="r" label="r" enabled="true" visible="true" x="112" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="t" label="t" enabled="true" visible="true" x="150" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="y" label="y" enabled="true" visible="true" x="187" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="u" label="u" enabled="true" visible="true" x="225" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="i" label="i" enabled="true" visible="true" x="262" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="o" label="o" enabled="true" visible="true" x="300" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="p" label="p" enabled="true" visible="true" x="337" y="528" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="a" label="a" enabled="true" visible="true" x="18" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="s" label="s" enabled="true" visible="true" x="56" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="d" label="d" enabled="true" visible="true" x="93" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="f" label="f" enabled="true" visible="true" x="131" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="g" label="g" enabled="true" visible="true" x="169" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="h" label="h" enabled="true" visible="true" x="206" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="j" label="j" enabled="true" visible="true" x="244" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="k" label="k" enabled="true" visible="true" x="281" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="l" label="l" enabled="true" visible="true" x="319" y="582" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeButton type="XCUIElementTypeButton" name="shift" label="shift" enabled="true" visible="true" x="0" y="636" width="48" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="z" label="z" enabled="true" visible="true" x="56" y="636" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="x" label="x" enabled="true" visible="true" x="93" y="636" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="c" label="c" enabled="true" visible="true" x="131" y="636" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="v" label="v" enabled="true" visible="true" x="169" y="636" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="b" label="b" enabled="true" visible="true" x="206" y="636" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="n" label="n" enabled="true" visible="true" x="244" y="636" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="m" label="m" enabled="true" visible="true" x="281" y="636" width="38" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="delete" label="delete" enabled="true" visible="true" x="327" y="636" width="48" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="more" label="numbers" enabled="true" visible="true" x="0" y="690" width="94" height="46"/&gt;
-                &lt;XCUIElementTypeKey type="XCUIElementTypeKey" name="space" label="space" enabled="true" visible="true" x="93" y="690" width="189" height="46"/&gt;
-                &lt;XCUIElementTypeButton type="XCUIElementTypeButton" name="Return" label="return" enabled="true" visible="true" x="281" y="690" width="94" height="46"/&gt;
-              &lt;/XCUIElementTypeOther&gt;
-            &lt;/XCUIElementTypeOther&gt;
-          &lt;/XCUIElementTypeKeyboard&gt;
-        &lt;/XCUIElementTypeOther&gt;
-        &lt;XCUIElementTypeOther type="XCUIElementTypeOther" enabled="true" visible="true" x="0" y="521" width="375" height="291"&gt;
-          &lt;XCUIElementTypeButton type="XCUIElementTypeButton" name="Emoji" label="Emoji" enabled="true" visible="true" x="8" y="745" width="66" height="67"&gt;
-            &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" enabled="true" visible="false" x="8" y="745" width="0" height="1"/&gt;
-          &lt;/XCUIElementTypeButton&gt;
-          &lt;XCUIElementTypeButton type="XCUIElementTypeButton" name="dictation" label="Dictate" enabled="true" visible="true" x="301" y="745" width="66" height="66"&gt;
-            &lt;XCUIElementTypeStaticText type="XCUIElementTypeStaticText" enabled="true" visible="false" x="301" y="745" width="0" height="0"/&gt;
-          &lt;/XCUIElementTypeButton&gt;
-        &lt;/XCUIElementTypeOther&gt;
-      &lt;/XCUIElementTypeOther&gt;
-    &lt;/XCUIElementTypeOther&gt;
-  &lt;/XCUIElementTypeWindow&gt;
-&lt;/XCUIElementTypeApplication&gt;&lt;/AppiumAUT&gt;</msg>
-<status status="PASS" starttime="20230124 15:41:01.090" endtime="20230124 15:41:01.094"/>
-</kw>
-<kw name="Close Application" library="AppiumLibrary" type="TEARDOWN">
-<doc>Closes the current application and also close webdriver session.</doc>
-<status status="PASS" starttime="20230124 15:41:01.096" endtime="20230124 15:41:02.476"/>
-</kw>
-<status status="PASS" starttime="20230124 15:39:52.345" endtime="20230124 15:41:02.477"/>
+<status status="PASS" starttime="20230127 10:22:40.708" endtime="20230127 10:22:41.592"/>
 </test>
-<status status="PASS" starttime="20230124 15:39:51.848" endtime="20230124 15:41:02.479"/>
+<test id="s1-t2" name="TC2" line="10">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>alias=petshop</arg>
+<arg>url=pet/102</arg>
+<arg>expected_status=404</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230127 10:22:41.807" level="INFO">GET Request : url=https://petstore.swagger.io/v2/pet/102 
+ path_url=/v2/pet/102 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230127 10:22:41.807" level="INFO">GET Response : url=https://petstore.swagger.io/v2/pet/102 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 27 Jan 2023 04:52:40 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":1,"type":"error","message":"Pet not found"} 
+ </msg>
+<msg timestamp="20230127 10:22:41.807" level="INFO">C:\Users\40032462\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230127 10:22:41.807" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230127 10:22:41.592" endtime="20230127 10:22:41.807"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>404</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230127 10:22:41.807" endtime="20230127 10:22:41.807"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${response_body}</var>
+<arg>${response.json()}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230127 10:22:41.822" level="INFO">${response_body} = {'code': 1, 'type': 'error', 'message': 'Pet not found'}</msg>
+<status status="PASS" starttime="20230127 10:22:41.807" endtime="20230127 10:22:41.822"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_body}</arg>
+<arg>Pet not found</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230127 10:22:41.822" endtime="20230127 10:22:41.822"/>
+</kw>
+<status status="PASS" starttime="20230127 10:22:41.592" endtime="20230127 10:22:41.822"/>
+</test>
+<status status="PASS" starttime="20230127 10:22:40.510" endtime="20230127 10:22:41.822"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Demo5 Ios Nativeapp">Demo5 Ios Nativeapp</stat>
+<stat pass="2" fail="0" skip="0" id="s1" name="Demo2">Demo2</stat>
 </suite>
 </statistics>
 <errors>
